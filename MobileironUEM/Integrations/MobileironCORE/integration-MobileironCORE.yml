@@ -1,0 +1,970 @@
+category: End Point
+commonfields:
+  id: MobileironCORE
+  version: -1
+configuration:
+- display: Server URL (e.g. https://core.mobileiron.com)
+  name: url
+  required: true
+  type: 0
+- display: Admin Device Space ID(e.g.1)
+  name: adminDeviceSpaceId
+  required: true
+  type: 0
+- defaultvalue: common.status = "ACTIVE"  AND (common.quarantined = true  OR common.compliant
+    = false  OR common.security_state !=  "Ok")
+  display: Query
+  name: query
+  required: true
+  type: 0
+- display: User Name
+  name: credentials
+  required: true
+  type: 9
+- display: Fetch incidents
+  name: isFetch
+  required: true
+  type: 8
+- display: Incident type
+  name: incidentType
+  required: false
+  type: 13
+- display: Additional Fields
+  name: additionalfields
+  required: false
+  type: 0
+- display: Trust any certificate (not secure)
+  name: insecure
+  required: false
+  type: 8
+- display: Use system proxy settings
+  name: proxy
+  required: false
+  type: 8
+- defaultvalue: "30"
+  display: Fetch Interval(in minutes)
+  name: fetch_interval
+  required: true
+  type: 0
+description: Mobileiron CORE Integration
+detaileddescription: "##MobileironCORE\nUse the MobileironCORE integration to create
+  an incidents which are fetched from the third party based on query. "
+display: MobileironCORE
+image: data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSgBBwcHCggKEwoKEygaFhooKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKP/AABEIANsCvAMBEQACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/APqmgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKAPlX9uf/mSf+37/ANt6APqqgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKAPlX9uf/mSf+37/ANt6APqqgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKAPlX9uf/mSf+37/ANt6APqqgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKAPlX9uf/mSf+37/ANt6APqqgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKAPlX9uf/mSf+37/ANt6APqqgAoAKACgAoAKACgAoAKACgDhvE/xQ8N6F5kYujfXSnHk2mHwfdvuj88+1YzrwiezhMixeKs+XlXd/wCW55nrfxv1e4BTSLG1skP8cmZX/oP0Nc0sVJ7I+hw/C1CGtaTl6aL/ADORvPiN4tuyfM1u5QHtFiP/ANBArJ1pvqerTyXA09qa+ev5mZL4q8QynMmu6q31u5P8an2k+50LL8LHalH7kSQeMfEsBzHr+qfRrp2H5E01VmupMstwkt6UfuRt6d8VPF1kyk6kLlR1W4iVgfxwD+tWsRNdTjq5Bgai+C3ozudC+OalkTXdKKjo0to2fx2t/jW0cV/MjxsRwq1rQn8n/mv8j1Pw54q0XxHGW0i/incDLR52uo91PNdMKkZ/Cz5vFYDEYR2rRt59PvNurOMKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgA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AKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoA+Vf25/8AmSf+37/23oA+qqACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoA+Vf25/8AmSf+37/23oA+qqACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoA+Vf25/8AmSf+37/23oA+qqACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoA+Vf25/8AmSf+37/23oA+qqACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoA+Vf25/8AmSf+37/23oA5X/hqvxx/0CvDf/gPP/8AHqAD/hqvxx/0CvDf/gPP/wDHqAD/AIar8cf9Arw3/wCA8/8A8eoAP+Gq/HH/AECvDf8A4Dz/APx6gA/4ar8cf9Arw3/4Dz//AB6gA/4ar8cf9Arw3/4Dz/8Ax6gA/wCGq/HH/QK8N/8AgPP/APHqAD/hqvxx/wBArw3/AOA8/wD8eoAP+Gq/HH/QK8N/+A8//wAeoAP+Gq/HH/QK8N/+A8//AMeoAP8Ahqvxx/0CvDf/AIDz/wDx6gA/4ar8cf8AQK8N/wDgPP8A/HqAD/hqvxx/0CvDf/gPP/8AHqAD/hqvxx/0CvDf/gPP/wDHqAD/AIar8cf9Arw3/wCA8/8A8eoAP+Gq/HH/AECvDf8A4Dz/APx6gA/4ar8cf9Arw3/4Dz//AB6gA/4ar8cf9Arw3/4Dz/8Ax6gA/wCGq/HH/QK8N/8AgPP/APHqAD/hqvxx/wBArw3/AOA8/wD8eoAP+Gq/HH/QK8N/+A8//wAeoAP+Gq/HH/QK8N/+A8//AMeoAP8Ahqvxx/0CvDf/AIDz/wDx6gA/4ar8cf8AQK8N/wDgPP8A/HqAD/hqvxx/0CvDf/gPP/8AHqAD/hqvxx/0CvDf/gPP/wDHqAD/AIar8cf9Arw3/wCA8/8A8eoAP+Gq/HH/AECvDf8A4Dz/APx6gA/4ar8cf9Arw3/4Dz//AB6gA/4ar8cf9Arw3/4Dz/8Ax6gA/wCGq/HH/QK8N/8AgPP/APHqAD/hqvxx/wBArw3/AOA8/wD8eoAP+Gq/HH/QK8N/+A8//wAeoAP+Gq/HH/QK8N/+A8//AMeoAP8Ahqvxx/0CvDf/AIDz/wDx6gA/4ar8cf8AQK8N/wDgPP8A/HqAD/hqvxx/0CvDf/gPP/8AHqAD/hqvxx/0CvDf/gPP/wDHqAD/AIar8cf9Arw3/wCA8/8A8eoAP+Gq/HH/AECvDf8A4Dz/APx6gA/4ar8cf9Arw3/4Dz//AB6gA/4ar8cf9Arw3/4Dz/8Ax6gA/wCGq/HH/QK8N/8AgPP/APHqAD/hqvxx/wBArw3/AOA8/wD8eoAP+Gq/HH/QK8N/+A8//wAeoAP+Gq/HH/QK8N/+A8//AMeoAP8Ahqvxx/0CvDf/AIDz/wDx6gA/4ar8cf8AQK8N/wDgPP8A/HqAD/hqvxx/0CvDf/gPP/8AHqAD/hqvxx/0CvDf/gPP/wDHqAD/AIar8cf9Arw3/wCA8/8A8eoAP+Gq/HH/AECvDf8A4Dz/APx6gA/4ar8cf9Arw3/4Dz//AB6gA/4ar8cf9Arw3/4Dz/8Ax6gA/wCGq/HH/QK8N/8AgPP/APHqAD/hqvxx/wBArw3/AOA8/wD8eoAP+Gq/HH/QK8N/+A8//wAeoAP+Gq/HH/QK8N/+A8//AMeoAP8Ahqvxx/0CvDf/AIDz/wDx6gA/4ar8cf8AQK8N/wDgPP8A/HqAD/hqvxx/0CvDf/gPP/8AHqAD/hqvxx/0CvDf/gPP/wDHqAD/AIar8cf9Arw3/wCA8/8A8eoAP+Gq/HH/AECvDf8A4Dz/APx6gA/4ar8cf9Arw3/4Dz//AB6gA/4ar8cf9Arw3/4Dz/8Ax6gA/wCGq/HH/QK8N/8AgPP/APHqAD/hqvxx/wBArw3/AOA8/wD8eoAP+Gq/HH/QK8N/+A8//wAeoAP+Gq/HH/QK8N/+A8//AMeoAP8Ahqvxx/0CvDf/AIDz/wDx6gA/4ar8cf8AQK8N/wDgPP8A/HqAD/hqvxx/0CvDf/gPP/8AHqAD/hqvxx/0CvDf/gPP/wDHqAD/AIar8cf9Arw3/wCA8/8A8eoAP+Gq/HH/AECvDf8A4Dz/APx6gA/4ar8cf9Arw3/4Dz//AB6gA/4ar8cf9Arw3/4Dz/8Ax6gA/wCGq/HH/QK8N/8AgPP/APHqAD/hqvxx/wBArw3/AOA8/wD8eoAP+Gq/HH/QK8N/+A8//wAeoAP+Gq/HH/QK8N/+A8//AMeoAP8Ahqvxx/0CvDf/AIDz/wDx6gA/4ar8cf8AQK8N/wDgPP8A/HqAD/hqvxx/0CvDf/gPP/8AHqAD/hqvxx/0CvDf/gPP/wDHqAD/AIar8cf9Arw3/wCA8/8A8eoA8/8Aiv8AFXXPib/Zf9vWum2/9neb5X2KN03eZs3btztn7gxjHegD/9k=
+name: MobileironCORE
+script:
+  commands:
+  - arguments:
+    - description: This argument fetch the device id for mobileiron send message command
+      name: device_id
+    - description: This argument fetches the platform for mobileiron send message
+        command
+      name: platform
+    - description: Provide Subject for email
+      name: subject
+      required: true
+    - description: Provide message for email
+      name: message
+      required: true
+    - auto: PREDEFINED
+      description: Push Message Mode
+      name: push_message
+      predefined:
+      - pns
+      - sms
+      - email
+      required: true
+    description: This command is used to send a message to the particular device based
+      on device id
+    name: mobileiron-send-message
+    outputs:
+    - contextPath: Mobileiron.cmd_result
+      description: Command result for send message
+      type: unknown
+    - contextPath: Mobileiron.err_code
+      description: Command code for send message
+    - contextPath: Mobileiron.err_message
+      description: Command message for send message
+  - arguments:
+    - description: This argument fetch the device id for mobileiron update os command
+      name: device_id
+    - description: This argument fetches the platform for mobileiron update os command
+      name: platform
+    description: This command is used to update OS to the particular device based
+      on device id
+    name: mobileiron-update-os
+    outputs:
+    - contextPath: Mobileiron.cmd_result
+      description: Command result for update OS
+      type: unknown
+    - contextPath: Mobileiron.err_code
+      description: Command code for update OS
+    - contextPath: Mobileiron.err_message
+      description: Command message for update OS
+  - arguments:
+    - description: This argument fetch the device id for mobileiron unlock device
+        only command
+      name: device_id
+    - description: This argument fetches the platform for mobileiron unlock device
+        only command
+      name: platform
+    description: This command is used to unlock device to the particular device based
+      on device id
+    name: mobileiron-unlock-device-only
+    outputs:
+    - contextPath: Mobileiron.cmd_result
+      description: Command result for unlock device only
+      type: unknown
+    - contextPath: Mobileiron.err_code
+      description: Command code for unlock device only
+      type: boolean
+    - contextPath: Mobileiron.err_message
+      description: Command message for unlock device only
+  - arguments:
+    - description: This argument fetch the device id for mobileiron enable voice roaming
+        command
+      name: device_id
+    - description: This argument fetches the platform for mobileiron enable voice
+        roaming command
+      name: platform
+    description: This command is used to enable voice roaming to the particular device
+      based on device id
+    name: mobileiron-enable-voice-roaming
+    outputs:
+    - contextPath: Mobileiron.cmd_result
+      description: Command result for enable voice roaming
+      type: unknown
+    - contextPath: Mobileiron.err_code
+      description: Command code for enable voice roaming
+    - contextPath: Mobileiron.err_message
+      description: Command message for enable voice roaming
+  - arguments:
+    - description: This argument fetch the device id for mobileiron disable voice
+        roaming command
+      name: device_id
+    - description: This argument fetches the platform for mobileiron disable voice
+        roaming command
+      name: platform
+    description: This command is used to disable voice roaming to the particular device
+      based on device id
+    name: mobileiron-disable-voice-roaming
+    outputs:
+    - contextPath: Mobileiron.cmd_result
+      description: Command result for disable voice roaming
+      type: unknown
+    - contextPath: Mobileiron.err_code
+      description: Command code for disable voice roaming
+    - contextPath: Mobileiron.err_message
+      description: Command message for disable voice roaming
+  - arguments:
+    - description: This argument fetch the device id for mobileiron enable data roaming
+        command
+      name: device_id
+    - description: This argument fetches the platform for mobileiron enable data roaming
+        command
+      name: platform
+    description: This command is used to enable data roaming to the particular device
+      based on device id
+    name: mobileiron-enable-data-roaming
+    outputs:
+    - contextPath: Mobileiron.cmd_result
+      description: Command result for enable data roaming
+      type: unknown
+    - contextPath: Mobileiron.err_code
+      description: Command code for enable data roaming
+    - contextPath: Mobileiron.err_message
+      description: Command message for enable data roaming
+  - arguments:
+    - description: This argument fetch the device id for mobileiron disable data roaming
+        command
+      name: device_id
+    - description: This argument fetches the platform for mobileiron disable data
+        roaming command
+      name: platform
+    description: This command is used to disable data roaming to the particular device
+      based on device id
+    name: mobileiron-disable-data-roaming
+    outputs:
+    - contextPath: Mobileiron.cmd_result
+      description: Command result for disable data roaming
+      type: unknown
+    - contextPath: Mobileiron.err_code
+      description: Command code for disable data roaming
+    - contextPath: Mobileiron.err_message
+      description: Command message for disable data roaming
+  - arguments:
+    - description: This argument fetch the device id for mobileiron enable personal
+        hotspot command
+      name: device_id
+    - description: This argument fetches the platform for mobileiron enable personal
+        hotspot command
+      name: platform
+    description: This command is used to enable personal hotspot to the particular
+      device based on device id
+    name: mobileiron-enable-personal-hotspot
+    outputs:
+    - contextPath: Mobileiron.cmd_result
+      description: Command result for enable personal hotspot
+      type: unknown
+    - contextPath: Mobileiron.err_code
+      description: Command code for enable personal hotspot
+    - contextPath: Mobileiron.err_message
+      description: Command message for enable personal hotspot
+  - arguments:
+    - description: This argument fetch the device id for mobileiron disable personal
+        hotspot command
+      name: device_id
+    - description: This argument fetches the platform for mobileiron disable personal
+        hotspot command
+      name: platform
+    description: This command is used to disable personal hotspot to the particular
+      device based on device id
+    name: mobileiron-disable-personal-hotspot
+    outputs:
+    - contextPath: Mobileiron.cmd_result
+      description: Command result for disable personal hotspot
+      type: unknown
+    - contextPath: Mobileiron.err_code
+      description: Command code for disable personal hotspot
+    - contextPath: Mobileiron.err_message
+      description: Command message for disable personal hotspot
+  - arguments:
+    - description: This argument fetch the device id for mobileiron unlock app connect
+        container command
+      name: device_id
+    - description: This argument fetches the platform for mobileiron unlock app connect
+        container command
+      name: platform
+    description: This command is used to unlock app connect container to the particular
+      device based on device id
+    name: mobileiron-unlock-app-connect-container
+    outputs:
+    - contextPath: Mobileiron.cmd_result
+      description: Command result for unlock app connect contianer
+      type: unknown
+    - contextPath: Mobileiron.err_code
+      description: Command code for unlock app connect container
+    - contextPath: Mobileiron.err_message
+      description: Command message for unlock app connect container
+  - arguments:
+    - description: This argument fetch the device id for mobileiron retire device
+        command
+      name: device_id
+    - description: This argument fetches the platform for mobileiron retire device
+        command
+      name: platform
+    description: This command is used to retire device to the particular device based
+      on device id
+    name: mobileiron-retire-device
+    outputs:
+    - contextPath: Mobileiron.cmd_result
+      description: Command result for retire device
+      type: unknown
+    - contextPath: Mobileiron.err_code
+      description: Command code for retire device
+    - contextPath: Mobileiron.err_message
+      description: Command message for retire device
+  - arguments:
+    - description: This argument fetch the device id for mobileiron wipe device command
+      name: device_id
+    - description: This argument fetches the platform for mobileiron wipe device command
+      name: platform
+    description: This command is used to wipe device to the particular device based
+      on device id
+    name: mobileiron-wipe-device
+    outputs:
+    - contextPath: Mobileiron.cmd_result
+      description: Command result for wipe device
+      type: unknown
+    - contextPath: Mobileiron.err_code
+      description: Command code for wipe device
+    - contextPath: Mobileiron.err_message
+      description: Command message for wipe device
+  - arguments:
+    - description: This argument fetch the device id for mobileiron force checkin
+        command
+      name: device_id
+    - description: This argument fetches the platform for mobileiron force checkin
+        command
+      name: platform
+    description: This command is used to force checkin to the particular device based
+      on device id
+    name: mobileiron-force-checkin
+    outputs:
+    - contextPath: Mobileiron.cmd_result
+      description: Command result for force checkin
+      type: unknown
+    - contextPath: Mobileiron.err_code
+      description: Command code for force checkin
+    - contextPath: Mobileiron.err_message
+      description: Command message for force checkin
+  - arguments: []
+    description: This command is used to get devices data to the particular device
+      based on device id
+    name: mobileiron-get-devices-data
+    outputs:
+    - contextPath: MobileIron.DevicesInfo
+      description: Fetches the data from devices
+      type: Unknown
+  dockerimage: demisto/python3:3.8.3.9324
+  isfetch: true
+  runonce: false
+  script: |-
+    import json
+    import requests
+    import traceback
+    import urllib3
+    from typing import Any, Dict, Tuple, List, Optional, Union, cast
+
+    # Disable insecure warnings
+    urllib3.disable_warnings()
+
+    '''Constants'''
+
+    default_fields = "common.uuid,common.compliant,common.id,common.imei,common.imsi,common.last_connected_at,common.manufacturer,common.model,common.noncompliance_reasons,common.owner,common.platform,common.quarantined,common.quarantined_reasons,common.registration_date,common.status,user.display_name,user.email_address,user.user_id,common.security_state"
+    translation_core = {
+        'common.uuid':'deviceId',
+        'common.id':'Id',
+        'common.os_version':'OS Version',
+        'common.manufacturer':'manufacturer',
+        'common.model':'DeviceModel',
+        'common.status':'Registration Status',
+        'common.imei':'IMEI',
+        'common.imsi':'IMSI',
+        'common.platform':'Platform',
+        'common.security_state': 'Security State',
+        'user.display_name': 'User Display Name',
+        'user.email_address': 'User Email address',
+        'user.user_id': 'User ID',
+        'common.last_connected_at': 'Last check in Timestamp',
+        'common.registration_date': 'Device registration timestamp',
+        'common.owner': 'Device Owner',
+        'common.quarantined': 'IsDeviceQuarantined',
+        'common.compliant': 'IsDeviceCompliant'
+    }
+
+    """ Read the integration params and declare them as global variables.
+    """
+    params = demisto.params()
+    credentials = params.get('credentials')
+    username = credentials.get('identifier')
+    password = credentials.get('password')
+    base_url = params.get('url')
+    devices_url = urljoin(params.get('url'), '/api/v2/devices?')
+    post_action_url = urljoin(params.get('url'), '/api/v2/devices/action?')
+    admin_space_id = params.get('adminDeviceSpaceId')
+    additional_fields = params.get('additionalfields')
+    queryParam = params.get('query')
+    timeInteval = params.get('fetch_interval')
+
+    #Initiate default data for headers.
+    auth_header = b64_encode(f'{username}:{password}')
+    headers = {
+        'Authorization': f'Basic {auth_header}'
+    }
+
+    incidents = []
+    translation = []
+
+    class MobileironClient(BaseClient):
+        """Client class to interact with the service API
+
+        This Client implements API calls, and does not contain any Demisto logic.
+        Should only do requests and return data.
+        It inherits from BaseClient defined in CommonServer Python.
+        Most calls use _http_request() that handles proxy, SSL verification, etc.
+        """
+
+        def get_devices_data(self, query: str = queryParam, fields: str = default_fields, adminspaceid: str = admin_space_id) -> Dict[str, Any]:
+            """Gets the Devices Data from Mobileiron Core
+
+            :type query: ``str``
+            :param query: Conditions in the Core API Call
+
+            :type fields: ``str``
+            :param fields: Attributes to be retrieved
+
+            :type adminspaceid: ``str``
+            :param adminspaceid: Admin Space ID
+
+            :return: dict containing Devices Data as returned from the API
+            :rtype: ``Dict[str, Any]``
+            """
+
+
+            """ Code for Pagination
+                The core device api can retrive only limited list of devices at each run.
+                fetchBatch is the attribute used to set the limit for each run. The default value is 25.
+                This value can be changed according to the information provided in API documentation from Mobileiron Core.
+            """
+            fetchBatch = 25
+            """ find the devices count. """
+            if not additional_fields:
+                response = self._http_request(
+                    method='GET',
+                    url_suffix='/api/v2/devices/count',
+                    params={
+                        'adminDeviceSpaceId':admin_space_id,
+                        'query':query,
+                        'fields':fields
+                    }
+                )
+            else:
+                response = self._http_request(
+                    method='GET',
+                    url_suffix='/api/v2/devices/count',
+                    params={
+                        'adminDeviceSpaceId':admin_space_id,
+                        'query':query,
+                        'fields':fields+","+additional_fields
+                    }
+                )
+            data = []
+            cntDevices = response["totalCount"]
+            inCnt = 0
+            """ If the devices count is more than the fetchBatch(number of devices to fetch in each run)
+                Loop through in batch mode and append the device data into data[] array.
+            """
+            if (int(cntDevices) > fetchBatch):
+                while inCnt < cntDevices:
+                    #Get batch incidents from intCnt to inCnt+fetchBatch
+                    if not additional_fields:
+                        deviceResponse = self._http_request(
+                            method='GET',
+                            url_suffix='/api/v2/devices',
+                            params={
+                                'adminDeviceSpaceId':admin_space_id,
+                                'query':query,
+                                'fields':fields,
+                                'limit':fetchBatch,
+                                'offset':inCnt
+                            }
+                        )
+                    else:
+                        deviceResponse = self._http_request(
+                            method='GET',
+                            url_suffix='/api/v2/devices',
+                            params={
+                                'adminDeviceSpaceId':admin_space_id,
+                                'query':query,
+                                'fields':fields+","+additional_fields,
+                                'limit':fetchBatch,
+                                'offset':inCnt
+                            }
+                        )
+
+                    for device in deviceResponse['results']:
+                        data.append(device)
+                    inCnt += fetchBatch
+            else:
+                """ If the devices count is less than the fetchBatch(number of devices to fetch in each run)
+                    fetch all the devices in one run and append the device data into data[] array.
+                """
+                #Get full list of devices.
+                if not additional_fields:
+                    deviceResponse = self._http_request(
+                        method='GET',
+                        url_suffix='/api/v2/devices',
+                        params={
+                            'adminDeviceSpaceId':admin_space_id,
+                            'query':query,
+                            'fields':fields
+                        }
+                    )
+                else:
+                    deviceResponse = self._http_request(
+                        method='GET',
+                        url_suffix='/api/v2/devices',
+                        params={
+                            'adminDeviceSpaceId':admin_space_id,
+                            'query':query,
+                            'fields':fields+","+additional_fields
+                        }
+                    )
+                for device in deviceResponse['results']:
+                        data.append(device)
+            """ return the value back to the fetch_incidents function.
+            """
+            return data
+
+
+        def get_device_severity(self, deviceInfo : Dict[str, Any]) -> str:
+            """Gets the severity based on following conditions
+
+            :type deviceInfo: ``json``
+            :param deviceInfo: Device Object with attributes info
+
+            return : 'str'
+            return param: returns severity to be set on the incident
+
+            """
+
+            """severity default value set to low"""
+            severity = convert_to_demisto_severity('Low')
+
+            if deviceInfo['common.security_state']:
+                severity = convert_to_demisto_severity('Critical')
+                return severity
+            elif deviceInfo['common.complaint'] == False :
+                severity = convert_to_demisto_severity('High')
+                return severity
+            elif deviceInfo['common.quarantined']:
+                severity = convert_to_demisto_severity('Low')
+                return severity
+
+            return severity
+
+        def execute_action(self, action_str: str, deviceid: str, method_type: str) -> Dict[str, Any]:
+            """Execute Post actions to Mobileiron CORE based on the conditions.
+
+            :type action_str: ``str``
+            :param action_str: Action String based on the action to be performed over Mobileiron Core.
+            :type deviceid: ``str``
+            :param deviceid: DeviceID on which the actions should be performed..
+            :type method_type: ``str``
+            :param method_type: Method type for the actions to be performed ('PUT','POST','GET')
+
+            :return: dict containing the scan results as returned from the API
+            :rtype: ``Dict[str, Any]``
+            """
+
+            payload = {"deviceUuids": [deviceid], "note": "Action Performed through XSOAR-Integration"}
+            if (action_str=="WIPE_DEVICE"):
+                #Body = json.dumps(payload)
+                return self._http_request(
+                    method=method_type,
+                    url_suffix='/api/v2/devices/wipe',
+                    params={
+                        'adminDeviceSpaceId':admin_space_id,
+                        'actionType':action_str
+                    },
+                    json_data=payload
+                )
+            elif (action_str=="RETIRE"):
+                #Body = json.dumps(payload)
+                return self._http_request(
+                    method=method_type,
+                    url_suffix='/api/v2/devices/retire',
+                    params={
+                        'adminDeviceSpaceId':admin_space_id,
+                        'actionType':action_str
+                    },
+                    json_data=payload
+                )
+            elif (action_str=="WAKE_UP"):
+                #Body = json.dumps(payload)
+                return self._http_request(
+                    method=method_type,
+                    url_suffix='/api/v2/devices/wakeup',
+                    params={
+                        'adminDeviceSpaceId':admin_space_id,
+                        'actionType':action_str
+                    },
+                    json_data=payload
+                )
+            else:
+                #Body = json.dumps(payload)
+                return self._http_request(
+                    method=method_type,
+                    url_suffix='/api/v2/devices/action',
+                    params={
+                        'adminDeviceSpaceId':admin_space_id,
+                        'actionType':action_str
+                    },
+                    json_data=payload
+                )
+
+        def send_message(self, msg_str: str,msg_mode:str,msg_sub: str, deviceid: str) -> Dict[str, Any]:
+            """Execute send message action to Mobileiron CORE based on the conditions.
+
+            :type msg_str: ``str``
+            :param msg_str: Message to send to the specified devices.
+            :type msg_mode: ``str``
+            :param msg_mode: Mode of the message:
+                                • pns (push notifications)
+                                • sms
+                                • email (email takes the subject parameter, too)
+            :type msg_sub: ``str``
+            :param msg_sub: Provide if desired when the message mode is email.
+            :type deviceid: ``str``
+            :param deviceid: DeviceID on which the actions should be performed..
+
+
+            :return: dict containing the scan results as returned from the API
+            :rtype: ``Dict[str, Any]``
+            """
+
+            payload = {"deviceUuids": [deviceid], "note": "Message sent through XSOAR-Integration", "additionalParameters":{"message":msg_str,"mode":msg_mode,"subject":msg_sub  }}
+            #Body = json.dumps(payload)
+            return self._http_request(
+                method='POST',
+                url_suffix='/api/v2/devices/action',
+                params={
+                    'adminDeviceSpaceId':admin_space_id,
+                    'actionType':'SEND_MESSAGE'
+                },
+                json_data=payload
+            )
+        def ping_url(self):
+            """Executes PING ´to check for the connection with Mobileiron CORE.
+
+            :return: Demisto.results(ok)
+            :rtype:
+            """
+            #payload = {"deviceUuids": [deviceid], "note": "Message sent through XSOAR-Integration", "additionalParameters":{"message":msg_str,"mode":msg_mode,"subject":msg_sub  }}
+            #Body = json.dumps(payload)
+            response = self._http_request(
+                method='GET',
+                url_suffix='/api/v2/ping'
+            )
+            if (response) and (response["results"]):
+                demisto.results('ok')
+
+
+    def rename_keys(event_input:Dict[str, Any], keys:Dict[str, Any])-> Dict[str, Any]:
+        """ Function to rename/translate keys from the API Response
+
+            :type event_input: ``str``
+            :param event_input: Each device information retrieved from CORE.
+            :type keys: ``str``
+            :param keys: Translated keys set as definied in the headers.
+
+            :return: dict containing the scan results as returned from the API
+            :rtype: ``Dict[str, Any]``
+            """
+
+        return dict([(keys.get(k, k), v) for k, v in event_input.items()])
+
+    def datetime_to_posix_without_milliseconds(datetime_object):
+        """ Function to convert UTC time to string. """
+        timestamp_in_unix_millisecond = date_to_timestamp(datetime_object, 'datetime.datetime')
+        posix_with_ms = timestamp_in_unix_millisecond
+        posix_without_ms = str(posix_with_ms).split(',')[0]
+        return posix_without_ms
+
+
+    def convert_to_demisto_severity(severity: str) -> int:
+        """Maps severity to Cortex XSOAR severity
+
+        Converts the severity level ('Low', 'Medium',
+        'High', 'Critical') to Cortex XSOAR incident severity (1 to 4)
+        for mapping.
+
+        :type severity: ``str``
+        :param severity: severity as returned based on device data input (str)
+
+        :return: Cortex XSOAR Severity (1 to 4)
+        :rtype: ``int``
+        """
+
+        # In this case the mapping is straightforward, but more complex mappings
+        # might be required in your integration, so a dedicated function is
+        # recommended. This mapping should also be documented.
+        return {
+            'Low': 1,  # low severity
+            'Medium': 2,  # medium severity
+            'High': 3,  # high severity
+            'Critical': 4   # critical severity
+        }[severity]
+
+    def execute_command(client: MobileironClient, args: Dict[str, Any], action_str, method_type ) -> CommandResults:
+        """mobileiron-unlock-device-only command: Returns results for a Mobileiron PostAction
+
+        :type client: ``Client``
+        :param Client: Mobileiron client to use
+
+        :type args: ``Dict[str, Any]``
+        :param args:
+            all command arguments, usually passed from ``demisto.args()``.
+            ``args['device_id']`` Device ID to post actions on a device
+
+        :return:
+            A ``CommandResults`` compatible to return ``return_results()``,
+            that contains a Post action result
+            A Dict of entries also compatible to ``return_results()``
+
+        :rtype: ``CommandResults``
+        """
+
+        deviceid = args.get('device_id',None)
+        action_str=action_str
+        response = client.execute_action(action_str=action_str, deviceid=deviceid, method_type=method_type)
+
+        validation = response["successful"]
+        if validation:
+            results = { 'cmd_result':True ,
+                        'err_code':0,
+                        'err_message':'Command has been executed sucessfully'
+                      }
+
+            return CommandResults(
+                #readable_output=readable_output,
+                outputs_prefix='Mobileiron',
+                outputs_key_field='cmd_result',
+                outputs=results
+            )
+        else:
+            raise ValueError(response)
+    def ping_url(client: MobileironClient):
+        """ This definition is for test command - get Ping response from Core
+
+
+            :return: demisto.results('ok')
+            :rtype: string.
+            """
+        version_url = urljoin(base_url, '/api/v2/ping')
+        response = client.ping_url()
+
+    def fetch_incidents(client: MobileironClient ) -> List[Dict[str, Any]] :
+        """
+            This function returns incidents after analyzing the response data
+
+            This function has to implement the logic of making sure that incidents are
+            fetched based on analyzing the response data. By default it's invoked by
+            XSOAR every minute. It will use last_run to save the timestamp of the last
+            incident it processed.
+
+            :type client: ``Client``
+            :param Client: Mobileiron Core client to use
+
+            :return:
+                incidents are returned in the form of dict
+        """
+
+        # Initialize an empty list of incidents to return
+        # Each incident is a dict with a string as a key
+        incidents: List[Dict[str, Any]] = []
+
+        """get the devices data from Core Call API response"""
+        devices_response = client.get_devices_data()
+        #devices = devices_response['results']
+
+        for device in devices_response:
+
+            # If no name is present it will throw an exception
+            incident_name = device['common.model']
+
+            #Rename keys for device attributes
+            modified_device = rename_keys(device, translation_core)
+
+            # get Device Severity
+            severity = client.get_device_severity(device)
+
+            # INTEGRATION DEVELOPER TIP
+            # The incident dict is initialized with a few mandatory fields:
+            # name: the incident name
+            # rawJSON: everything else is packed in a string via json.dumps()
+            # and is included in rawJSON. It will be used later for classification
+            # and mapping inside XSOAR.
+            # severity: it's not mandatory, but is recommended. It must be
+            # converted to XSOAR specific severity (int 1 to 4)
+            # Type : Incident Type
+            incident = {
+                'name': incident_name,
+                'rawJSON': json.dumps(modified_device),
+                'type': 'UEM Device Core',  # Map to a specific XSOAR incident Type
+                'severity': severity
+            }
+            incidents.append(incident)
+
+        return incidents
+
+    def get_devices_data_command(client: MobileironClient, args: Dict[str, Any]) -> CommandResults:
+        """get-devices command: Returns a list of all devices in the mobileiron system
+
+        :type client: ``MobileironClient``
+        :param client: Mobileiron UEM client to use
+
+        :type args: ``Dict[str, Any]``
+        :param args:
+            all command arguments, usually passed from ``demisto.args()``
+
+        :return:
+            A ``CommandResults`` object that is then passed to ``return_results``,
+            that contains the device data
+
+        :rtype: ``CommandResults``
+        """
+
+        devices_data_response = client.get_devices_data()
+        #devices_data = devices_data_response['results']
+        #readable_output = tableToMarkdown(f'Device List', devices_data)
+
+        return CommandResults(
+            #readable_output=readable_output,
+            outputs_prefix='Mobileiron.DevicesInfo',
+            outputs_key_field='devices_data',
+            outputs=devices_data_response
+        )
+
+    def send_message_command(client: MobileironClient, args: Dict[str, Any]) -> CommandResults:
+        """mobileiron-update-os command: Returns results for a Mobileiron PostAction
+
+        :type client: ``Client``
+        :param Client: Mobileiron client to use
+
+        :type args: ``Dict[str, Any]``
+        :param args:
+            all command arguments, usually passed from ``demisto.args()``.
+            ``args['device_id']`` Device ID to post actions on a device
+
+        :return:
+            A ``CommandResults`` compatible to return ``return_results()``,
+            that contains a Post action result
+            A Dict of entries also compatible to ``return_results()``
+
+        :rtype: ``CommandResults``
+        """
+
+        deviceid = args.get('device_id',None)
+        message = args.get('message',None)
+        subject = args.get('subject',None)
+        puschMsg = args.get('push_message', None)
+
+        response = client.send_message(message,puschMsg,subject, deviceid)
+        validation = response["successful"]
+        if validation:
+            results = { 'cmd_result':True ,
+                        'err_code':0,
+                        'err_message':'Command has been executed sucessfully'
+                      }
+
+            return CommandResults(
+                #readable_output=readable_output,
+                outputs_prefix='Mobileiron',
+                outputs_key_field='cmd_result',
+                outputs=results
+            )
+        else:
+            raise ValueError(response)
+
+    def main():
+
+        # if your MobileironClient class inherits from BaseClient, SSL verification is
+        # handled out of the box by it, just pass ``verify_certificate`` to
+        # the MobileironClient constructor
+        verify_certificate = not demisto.params().get('insecure', False)
+
+        # if your MobileironClient class inherits from BaseClient, system proxy is handled
+        # out of the box by it, just pass ``proxy`` to the MobileironClient constructor
+        proxy = demisto.params().get('proxy', False)
+        try:
+
+            client = MobileironClient(
+                base_url=base_url,
+                verify=verify_certificate,
+                headers=headers,
+                proxy=proxy)
+
+            if demisto.command() == 'test-module':
+                # This is the call made when pressing the integration Test button.
+                ping_url(client)
+
+            elif demisto.command() == 'fetch-incidents':
+                #Code For changing the pull incidents with timeline.
+                now_utc = datetime.utcnow()
+                current_run_time_posfix = datetime_to_posix_without_milliseconds(now_utc)
+                current_run_time = current_run_time_posfix
+
+                last_run_data = demisto.getLastRun()
+                last_run_time = int(0)
+                if last_run_data:
+                    last_run_time = last_run_data['time']
+
+                next_run_interval = timeInteval
+                date_time_interval_ago = now_utc - timedelta(minutes=int(next_run_interval))
+                date_time_interval_ago_posix = datetime_to_posix_without_milliseconds(date_time_interval_ago)
+                time_interval_ago = date_time_interval_ago_posix
+
+                if last_run_time != 0:
+                    if last_run_time > time_interval_ago:
+                        noIncidents = []
+                        demisto.incidents(noIncidents)
+                        sys.exit(0)
+                        #End of skip based on the time interval.
+
+                # Set and define the fetch incidents command to run after activated via integration settings.
+                incidents = fetch_incidents(
+                    client=client
+                )
+                # fetch-incidents calls ``demisto.incidents()`` to provide the list
+                # of incidents to crate
+                demisto.incidents(incidents)
+                demisto.setLastRun({'time': current_run_time})
+
+            elif demisto.command() == 'mobileiron-get-devices-data':
+                # To get the list of devices data with the given parameters.
+                return_results(get_devices_data_command(client, demisto.args()))
+
+            elif demisto.command() == 'mobileiron-unlock-device-only':
+                # Post Action to unclock a Fetched device based on device id
+                #return_results(unlock_device_only_command(client, demisto.args()))
+                return_results(execute_command(client, demisto.args(),"UNLOCK_DEVICE_ONLY", "POST"))
+
+            elif demisto.command() == 'mobileiron-enable-voice-roaming':
+                # Post Action to enable voice roaming on a Fetched device based on device id
+                #return_results(enable_voice_roaming_command(client, demisto.args()))
+                return_results(execute_command(client, demisto.args(),"ENABLE_VOICE_ROAMING", "POST"))
+
+            elif demisto.command() == 'mobileiron-disable-voice-roaming':
+                # Post Action to disable voice roaming on a Fetched device based on device id
+                #return_results(disable_voice_roaming_command(client, demisto.args()))DISABLE_VOICE_ROAMING
+                return_results(execute_command(client, demisto.args(),"DISABLE_VOICE_ROAMING", "POST"))
+
+            elif demisto.command() == 'mobileiron-enable-data-roaming':
+                # Post Action to enable data roaming on a Fetched device based on device id
+                #return_results(enable_data_roaming_command(client, demisto.args()))
+                return_results(execute_command(client, demisto.args(),"ENABLE_DATA_ROAMING", "POST"))
+
+            elif demisto.command() == 'mobileiron-disable-data-roaming':
+                # Post Action to disable data roaming on a Fetched device based on device id
+                #return_results(disable_data_roaming_command(client, demisto.args()))
+                return_results(execute_command(client, demisto.args(),"DISABLE_DATA_ROAMING", "POST"))
+
+            elif demisto.command() == 'mobileiron-enable-personal-hotspot':
+                # Post Action to enable personal hotspot on a Fetched device based on device id
+                #return_results(enable_personal_hotspot_command(client, demisto.args()))
+                return_results(execute_command(client, demisto.args(),"ENABLE_PERSONAL_HOTSPOT", "POST"))
+
+            elif demisto.command() == 'mobileiron-disable-personal-hotspot':
+                # Post Action to disable personal hotspot on a Fetched device based on device id
+                #return_results(disable_personal_hotspot_command(client, demisto.args()))
+                return_results(execute_command(client, demisto.args(),"DISABLE_PERSONAL_HOTSPOT", "POST"))
+
+            elif demisto.command() == 'mobileiron-send-message':
+                # Post Action to send message on a Fetched device based on device id
+                return_results(send_message_command(client, demisto.args()))
+
+            elif demisto.command() == 'mobileiron-update-os':
+                # Post Action to update OS on a Fetched device based on device id
+                #return_results(update_os_command(client, demisto.args()))
+                return_results(execute_command(client, demisto.args(),"UPDATE_OS", "POST"))
+
+            elif demisto.command() == 'mobileiron-unlock-app-connect-container':
+                # Post Action to unlock app container on a Fetched device based on device id
+                #return_results(unlock_app_connect_container_command(client, demisto.args()))
+                return_results(execute_command(client, demisto.args(),"UNLOCK_APP_CONNECT_CONTAINER", "POST"))
+
+            elif demisto.command() == 'mobileiron-retire-device':
+                # Post Action to retire a device on a Fetched device based on device id
+                #return_results(retire_device_command(client, demisto.args()))
+                return_results(execute_command(client, demisto.args(),"RETIRE", "PUT"))
+
+            elif demisto.command() == 'mobileiron-wipe-device':
+                # Post Action to wipe a device on a Fetched device based on device id
+                #return_results(wipe_device_command(client, demisto.args()))
+                return_results(execute_command(client, demisto.args(),"WIPE_DEVICE", "PUT"))
+
+            elif demisto.command() == 'mobileiron-force-checkin':
+                # Post Action to force-checkin a device on a Fetched device based on device id
+                return_results(execute_command(client, demisto.args(),"WAKE_UP", "PUT"))
+
+        # Log exceptions and return errors
+        except Exception as e:
+            demisto.error(traceback.format_exc())  # print the traceback
+            return_error(f'Failed to execute {demisto.command()} command.\nError:\n{str(e)}')
+
+    if __name__ in ('__main__', '__builtin__', 'builtins'):
+        main()
+  subtype: python3
+  type: python

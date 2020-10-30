@@ -1,0 +1,311 @@
+category: End Point
+commonfields:
+  id: MobileironCORE
+  version: -1
+configuration:
+- display: Server URL (e.g. https://core.mobileiron.com)
+  name: url
+  required: true
+  type: 0
+- display: Admin Device Space ID(e.g.1)
+  name: adminDeviceSpaceId
+  required: true
+  type: 0
+- defaultvalue: common.status = "ACTIVE"  AND (common.quarantined = true  OR common.compliant
+    = false  OR common.security_state !=  "Ok")
+  display: Query
+  name: query
+  required: true
+  type: 0
+- display: User Name
+  name: credentials
+  required: true
+  type: 9
+- display: Fetch incidents
+  name: isFetch
+  required: true
+  type: 8
+- display: Incident type
+  name: incidentType
+  required: false
+  type: 13
+- display: Additional Fields
+  name: additionalfields
+  required: false
+  type: 0
+- display: Trust any certificate (not secure)
+  name: insecure
+  required: false
+  type: 8
+- display: Use system proxy settings
+  name: proxy
+  required: false
+  type: 8
+- defaultvalue: "30"
+  display: Fetch Interval(in minutes)
+  name: fetch_interval
+  required: true
+  type: 0
+description: Mobileiron CORE Integration
+display: MobileironCORE
+name: MobileironCORE
+script:
+  commands:
+  - arguments:
+    - description: This argument fetch the device id for mobileiron send message command
+      name: device_id
+    - description: This argument fetches the platform for mobileiron send message
+        command
+      name: platform
+    - description: Provide Subject for email
+      name: subject
+      required: true
+    - description: Provide message for email
+      name: message
+      required: true
+    - auto: PREDEFINED
+      description: Push Message Mode
+      name: push_message
+      predefined:
+      - pns
+      - sms
+      - email
+      required: true
+    description: This command is used to send a message to the particular device based
+      on device id
+    name: mobileiron-send-message
+    outputs:
+    - contextPath: Mobileiron.cmd_result
+      description: Command result for send message
+      type: unknown
+    - contextPath: Mobileiron.err_code
+      description: Command code for send message
+    - contextPath: Mobileiron.err_message
+      description: Command message for send message
+  - arguments:
+    - description: This argument fetch the device id for mobileiron update os command
+      name: device_id
+    - description: This argument fetches the platform for mobileiron update os command
+      name: platform
+    description: This command is used to update OS to the particular device based
+      on device id
+    name: mobileiron-update-os
+    outputs:
+    - contextPath: Mobileiron.cmd_result
+      description: Command result for update OS
+      type: unknown
+    - contextPath: Mobileiron.err_code
+      description: Command code for update OS
+    - contextPath: Mobileiron.err_message
+      description: Command message for update OS
+  - arguments:
+    - description: This argument fetch the device id for mobileiron unlock device
+        only command
+      name: device_id
+    - description: This argument fetches the platform for mobileiron unlock device
+        only command
+      name: platform
+    description: This command is used to unlock device to the particular device based
+      on device id
+    name: mobileiron-unlock-device-only
+    outputs:
+    - contextPath: Mobileiron.cmd_result
+      description: Command result for unlock device only
+      type: unknown
+    - contextPath: Mobileiron.err_code
+      description: Command code for unlock device only
+      type: boolean
+    - contextPath: Mobileiron.err_message
+      description: Command message for unlock device only
+  - arguments:
+    - description: This argument fetch the device id for mobileiron enable voice roaming
+        command
+      name: device_id
+    - description: This argument fetches the platform for mobileiron enable voice
+        roaming command
+      name: platform
+    description: This command is used to enable voice roaming to the particular device
+      based on device id
+    name: mobileiron-enable-voice-roaming
+    outputs:
+    - contextPath: Mobileiron.cmd_result
+      description: Command result for enable voice roaming
+      type: unknown
+    - contextPath: Mobileiron.err_code
+      description: Command code for enable voice roaming
+    - contextPath: Mobileiron.err_message
+      description: Command message for enable voice roaming
+  - arguments:
+    - description: This argument fetch the device id for mobileiron disable voice
+        roaming command
+      name: device_id
+    - description: This argument fetches the platform for mobileiron disable voice
+        roaming command
+      name: platform
+    description: This command is used to disable voice roaming to the particular device
+      based on device id
+    name: mobileiron-disable-voice-roaming
+    outputs:
+    - contextPath: Mobileiron.cmd_result
+      description: Command result for disable voice roaming
+      type: unknown
+    - contextPath: Mobileiron.err_code
+      description: Command code for disable voice roaming
+    - contextPath: Mobileiron.err_message
+      description: Command message for disable voice roaming
+  - arguments:
+    - description: This argument fetch the device id for mobileiron enable data roaming
+        command
+      name: device_id
+    - description: This argument fetches the platform for mobileiron enable data roaming
+        command
+      name: platform
+    description: This command is used to enable data roaming to the particular device
+      based on device id
+    name: mobileiron-enable-data-roaming
+    outputs:
+    - contextPath: Mobileiron.cmd_result
+      description: Command result for enable data roaming
+      type: unknown
+    - contextPath: Mobileiron.err_code
+      description: Command code for enable data roaming
+    - contextPath: Mobileiron.err_message
+      description: Command message for enable data roaming
+  - arguments:
+    - description: This argument fetch the device id for mobileiron disable data roaming
+        command
+      name: device_id
+    - description: This argument fetches the platform for mobileiron disable data
+        roaming command
+      name: platform
+    description: This command is used to disable data roaming to the particular device
+      based on device id
+    name: mobileiron-disable-data-roaming
+    outputs:
+    - contextPath: Mobileiron.cmd_result
+      description: Command result for disable data roaming
+      type: unknown
+    - contextPath: Mobileiron.err_code
+      description: Command code for disable data roaming
+    - contextPath: Mobileiron.err_message
+      description: Command message for disable data roaming
+  - arguments:
+    - description: This argument fetch the device id for mobileiron enable personal
+        hotspot command
+      name: device_id
+    - description: This argument fetches the platform for mobileiron enable personal
+        hotspot command
+      name: platform
+    description: This command is used to enable personal hotspot to the particular
+      device based on device id
+    name: mobileiron-enable-personal-hotspot
+    outputs:
+    - contextPath: Mobileiron.cmd_result
+      description: Command result for enable personal hotspot
+      type: unknown
+    - contextPath: Mobileiron.err_code
+      description: Command code for enable personal hotspot
+    - contextPath: Mobileiron.err_message
+      description: Command message for enable personal hotspot
+  - arguments:
+    - description: This argument fetch the device id for mobileiron disable personal
+        hotspot command
+      name: device_id
+    - description: This argument fetches the platform for mobileiron disable personal
+        hotspot command
+      name: platform
+    description: This command is used to disable personal hotspot to the particular
+      device based on device id
+    name: mobileiron-disable-personal-hotspot
+    outputs:
+    - contextPath: Mobileiron.cmd_result
+      description: Command result for disable personal hotspot
+      type: unknown
+    - contextPath: Mobileiron.err_code
+      description: Command code for disable personal hotspot
+    - contextPath: Mobileiron.err_message
+      description: Command message for disable personal hotspot
+  - arguments:
+    - description: This argument fetch the device id for mobileiron unlock app connect
+        container command
+      name: device_id
+    - description: This argument fetches the platform for mobileiron unlock app connect
+        container command
+      name: platform
+    description: This command is used to unlock app connect container to the particular
+      device based on device id
+    name: mobileiron-unlock-app-connect-container
+    outputs:
+    - contextPath: Mobileiron.cmd_result
+      description: Command result for unlock app connect contianer
+      type: unknown
+    - contextPath: Mobileiron.err_code
+      description: Command code for unlock app connect container
+    - contextPath: Mobileiron.err_message
+      description: Command message for unlock app connect container
+  - arguments:
+    - description: This argument fetch the device id for mobileiron retire device
+        command
+      name: device_id
+    - description: This argument fetches the platform for mobileiron retire device
+        command
+      name: platform
+    description: This command is used to retire device to the particular device based
+      on device id
+    name: mobileiron-retire-device
+    outputs:
+    - contextPath: Mobileiron.cmd_result
+      description: Command result for retire device
+      type: unknown
+    - contextPath: Mobileiron.err_code
+      description: Command code for retire device
+    - contextPath: Mobileiron.err_message
+      description: Command message for retire device
+  - arguments:
+    - description: This argument fetch the device id for mobileiron wipe device command
+      name: device_id
+    - description: This argument fetches the platform for mobileiron wipe device command
+      name: platform
+    description: This command is used to wipe device to the particular device based
+      on device id
+    name: mobileiron-wipe-device
+    outputs:
+    - contextPath: Mobileiron.cmd_result
+      description: Command result for wipe device
+      type: unknown
+    - contextPath: Mobileiron.err_code
+      description: Command code for wipe device
+    - contextPath: Mobileiron.err_message
+      description: Command message for wipe device
+  - arguments:
+    - description: This argument fetch the device id for mobileiron force checkin
+        command
+      name: device_id
+    - description: This argument fetches the platform for mobileiron force checkin
+        command
+      name: platform
+    description: This command is used to force checkin to the particular device based
+      on device id
+    name: mobileiron-force-checkin
+    outputs:
+    - contextPath: Mobileiron.cmd_result
+      description: Command result for force checkin
+      type: unknown
+    - contextPath: Mobileiron.err_code
+      description: Command code for force checkin
+    - contextPath: Mobileiron.err_message
+      description: Command message for force checkin
+  - arguments: []
+    description: This command is used to get devices data to the particular device
+      based on device id
+    name: mobileiron-get-devices-data
+    outputs:
+    - contextPath: MobileIron.DevicesInfo
+      description: Fetches the data from devices
+      type: Unknown
+  dockerimage: demisto/python3:3.8.3.9324
+  isfetch: true
+  runonce: false
+  script: ''
+  subtype: python3
+  type: python

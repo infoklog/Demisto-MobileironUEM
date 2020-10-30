@@ -1,0 +1,385 @@
+{
+	"brands": null,
+	"defaultIncidentType": "",
+	"description": "",
+	"feed": false,
+	"fromServerVersion": "",
+	"id": "c5672071-25ba-478c-89fc-25e2ba35c1a0",
+	"incidentSamples": null,
+	"indicatorSamples": null,
+	"instanceIds": null,
+	"itemVersion": "",
+	"keyTypeMap": {},
+	"locked": false,
+	"logicalVersion": 20,
+	"mapping": {
+		"DoS": {
+			"dontMapEventToLabels": false,
+			"internalMapping": {
+				"Device ID": {
+					"complex": null,
+					"simple": "deviceId"
+				}
+			}
+		},
+		"UEM Device": {
+			"dontMapEventToLabels": false,
+			"internalMapping": {}
+		},
+		"UEM Device Cloud": {
+			"dontMapEventToLabels": false,
+			"internalMapping": {
+				"Agent ID": {
+					"complex": null,
+					"simple": "User ID"
+				},
+				"Device ID": {
+					"complex": null,
+					"simple": "deviceId"
+				},
+				"Deviceregistrationtimestamp": {
+					"complex": null,
+					"simple": "Device registration timestamp"
+				},
+				"Event ID": {
+					"complex": null,
+					"simple": "Id"
+				},
+				"First Name": {
+					"complex": null,
+					"simple": "User Display Name"
+				},
+				"IMEI": {
+					"complex": null,
+					"simple": "IMEI"
+				},
+				"IMSI": {
+					"complex": null,
+					"simple": "IMSI"
+				},
+				"Is Device Complaint?": {
+					"complex": null,
+					"simple": "IsDeviceCompliant"
+				},
+				"Is Device Quarantined?": {
+					"complex": null,
+					"simple": "IsDeviceQuarantined"
+				},
+				"IsDeviceCompliant ": {
+					"complex": null,
+					"simple": "IsDeviceCompliant"
+				},
+				"IsdeviceQuarantined": {
+					"complex": null,
+					"simple": "IsDeviceQuarantined"
+				},
+				"Last Check-in Timestamp": {
+					"complex": null,
+					"simple": "Last check in Timestamp"
+				},
+				"LastcheckinTimestamp": {
+					"complex": null,
+					"simple": "Last check in Timestamp"
+				},
+				"Manufacturer": {
+					"complex": null,
+					"simple": "manufacturer"
+				},
+				"Mobile Device Model": {
+					"complex": null,
+					"simple": "DeviceModel"
+				},
+				"OS": {
+					"complex": null,
+					"simple": "Platform"
+				},
+				"OS Version": {
+					"complex": null,
+					"simple": "OS Version"
+				},
+				"State": {
+					"complex": null,
+					"simple": "Security State"
+				},
+				"User Email Address": {
+					"complex": null,
+					"simple": "User Email address"
+				},
+				"UserEmailaddress": {
+					"complex": null,
+					"simple": "User Email address"
+				},
+				"imei": {
+					"complex": null,
+					"simple": "IMEI"
+				},
+				"imsi": {
+					"complex": null,
+					"simple": "IMSI"
+				},
+				"manufacturer ": {
+					"complex": null,
+					"simple": "manufacturer"
+				},
+				"owner": {
+					"complex": null,
+					"simple": "Device Owner"
+				},
+				"runStatus": {
+					"complex": null,
+					"simple": "Registration Status"
+				}
+			}
+		},
+		"UEM Device Core": {
+			"dontMapEventToLabels": false,
+			"internalMapping": {
+				"Agent ID": {
+					"complex": null,
+					"simple": "User ID"
+				},
+				"Device ID": {
+					"complex": null,
+					"simple": "deviceId"
+				},
+				"Device Registration Timestamp": {
+					"complex": null,
+					"simple": "Device registration timestamp"
+				},
+				"Deviceregistrationtimestamp": {
+					"complex": null,
+					"simple": "Device registration timestamp"
+				},
+				"Event ID": {
+					"complex": null,
+					"simple": "Id"
+				},
+				"First Name": {
+					"complex": null,
+					"simple": "User Display Name"
+				},
+				"IMEI": {
+					"complex": null,
+					"simple": "IMEI"
+				},
+				"IMSI": {
+					"complex": null,
+					"simple": "IMSI"
+				},
+				"Is Device Complaint?": {
+					"complex": null,
+					"simple": "IsDeviceCompliant"
+				},
+				"Is Device Quarantined?": {
+					"complex": null,
+					"simple": "IsDeviceQuarantined"
+				},
+				"IsDeviceCompliant ": {
+					"complex": null,
+					"simple": "IsDeviceCompliant"
+				},
+				"IsdeviceQuarantined": {
+					"complex": null,
+					"simple": "IsDeviceQuarantined"
+				},
+				"Last Check-in Timestamp": {
+					"complex": null,
+					"simple": "Last check in Timestamp"
+				},
+				"LastcheckinTimestamp": {
+					"complex": null,
+					"simple": "Last check in Timestamp"
+				},
+				"Manufacturer": {
+					"complex": null,
+					"simple": "manufacturer"
+				},
+				"Mobile Device Model": {
+					"complex": null,
+					"simple": "DeviceModel"
+				},
+				"OS": {
+					"complex": null,
+					"simple": "Platform"
+				},
+				"OS Version": {
+					"complex": null,
+					"simple": "OS Version"
+				},
+				"State": {
+					"complex": null,
+					"simple": "Security State"
+				},
+				"User Email Address": {
+					"complex": null,
+					"simple": "User Email address"
+				},
+				"UserEmailaddress": {
+					"complex": null,
+					"simple": "User Email address"
+				},
+				"imei": {
+					"complex": null,
+					"simple": "IMEI"
+				},
+				"imsi": {
+					"complex": null,
+					"simple": "IMSI"
+				},
+				"manufacturer ": {
+					"complex": null,
+					"simple": "manufacturer"
+				},
+				"owner": {
+					"complex": null,
+					"simple": "Device Owner"
+				},
+				"runStatus": {
+					"complex": null,
+					"simple": "Registration Status"
+				}
+			}
+		},
+		"dbot_classification_incident_type_all": {
+			"dontMapEventToLabels": false,
+			"internalMapping": {
+				"Agent ID": {
+					"complex": null,
+					"simple": "User ID"
+				},
+				"App": {
+					"complex": {
+						"accessor": "[0]",
+						"filters": [],
+						"root": "appEasIdentifiers",
+						"transformers": []
+					},
+					"simple": ""
+				},
+				"Device ID": {
+					"complex": null,
+					"simple": "deviceId"
+				},
+				"Device Name": {
+					"complex": null,
+					"simple": "deviceName"
+				},
+				"Deviceregistrationtimestamp": {
+					"complex": null,
+					"simple": "Device registration timestamp"
+				},
+				"Event ID": {
+					"complex": null,
+					"simple": "Id"
+				},
+				"First Name": {
+					"complex": null,
+					"simple": "displayName"
+				},
+				"IsDeviceCompliant ": {
+					"complex": {
+						"accessor": "",
+						"filters": [],
+						"root": "IsDeviceCompliant",
+						"transformers": []
+					},
+					"simple": ""
+				},
+				"IsdeviceQuarantined": {
+					"complex": null,
+					"simple": "IsDeviceQuarantined"
+				},
+				"Last Name": {
+					"complex": {
+						"accessor": "",
+						"filters": [],
+						"root": "lastName",
+						"transformers": []
+					},
+					"simple": ""
+				},
+				"LastcheckinTimestamp": {
+					"complex": null,
+					"simple": "Last check in Timestamp"
+				},
+				"MAC Address": {
+					"complex": {
+						"accessor": "",
+						"filters": [],
+						"root": "wifiMacAddress",
+						"transformers": []
+					},
+					"simple": ""
+				},
+				"Mobile Device Model": {
+					"complex": null,
+					"simple": "DeviceModel"
+				},
+				"OS": {
+					"complex": null,
+					"simple": "Platform"
+				},
+				"OS Version": {
+					"complex": null,
+					"simple": "OS Version"
+				},
+				"State": {
+					"complex": null,
+					"simple": "Security State"
+				},
+				"UserEmailaddress": {
+					"complex": null,
+					"simple": "User Email address"
+				},
+				"deviceId": {
+					"complex": null,
+					"simple": "deviceId"
+				},
+				"imei": {
+					"complex": null,
+					"simple": "IMEI"
+				},
+				"imsi": {
+					"complex": null,
+					"simple": "IMSI"
+				},
+				"manufacturer ": {
+					"complex": {
+						"accessor": "",
+						"filters": [],
+						"root": "manufacturer",
+						"transformers": []
+					},
+					"simple": ""
+				},
+				"occurred": {
+					"complex": {
+						"accessor": "",
+						"filters": [],
+						"root": "Device registration timestamp",
+						"transformers": []
+					},
+					"simple": ""
+				},
+				"runStatus": {
+					"complex": null,
+					"simple": "registration Status"
+				}
+			}
+		}
+	},
+	"name": "Mobileiron_mapping",
+	"nameRaw": "Mobileiron_mapping",
+	"packID": "",
+	"sortValues": null,
+	"sourceClassifierId": "",
+	"system": false,
+	"toServerVersion": "",
+	"transformer": {
+		"complex": null,
+		"simple": ""
+	},
+	"type": "mapping-incoming",
+	"unclassifiedCases": null,
+	"version": -1
+}

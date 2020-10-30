@@ -1,0 +1,691 @@
+category: End Point
+commonfields:
+  id: MobileironCLOUD
+  version: -1
+configuration:
+- display: Server URL (e.g. https://eu1.mobileiron.com)
+  name: url
+  required: true
+  type: 0
+- display: User Name
+  name: credentials
+  required: true
+  type: 9
+- display: Fetch incidents
+  name: isFetch
+  required: true
+  type: 8
+- display: Incident type
+  name: incidentType
+  required: false
+  type: 13
+- display: Partition ID(e.g.33533)
+  name: dmPartitionId
+  required: true
+  type: 0
+- defaultvalue: quarantined=FALSE
+  display: Query
+  name: query
+  required: true
+  type: 0
+- display: Trust any certificate (not secure)
+  name: insecure
+  required: false
+  type: 8
+- display: Use system proxy settings
+  name: proxy
+  required: false
+  type: 8
+- defaultvalue: "30"
+  display: Fetch Interval(in minutes)
+  name: fetch_interval
+  required: true
+  type: 0
+description: Mobileiron CLOUD Integration
+detaileddescription: "##MobileironCLOUD\nUse the MobileironCLOUD integration to create
+  an incidents which are fetched from the third party based on query. "
+display: MobileironCLOUD
+image: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAABaCAMAAAChZfCYAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QThCMUU1N0VFQTdEMTFFNDkwRTFERUU4QUQwNkQwNjgiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QThCMUU1N0RFQTdEMTFFNDkwRTFERUU4QUQwNkQwNjgiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo3Mzg1NjYyRkVBN0QxMUU0QjlFMEM2MUE3NTg3OTBFOCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo3Mzg1NjYzMEVBN0QxMUU0QjlFMEM2MUE3NTg3OTBFOCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pr7iqRQAAAGAUExURXmcvZ22zpayzImoxR1ZkC1lmIyrx018qGmRteXs8q3C1n6gwD5yoZq1zaG60Uh4pZGuyV+KsYGjwbrN3fv8/env9NHe6aS80sLS4XSZu9bh6ydglRpXjvb4+7XJ2ytjl97m7+/z93aavOvw9cvZ5fL2+bnL3MDR4FqGriJdkuDo8EZ3pDJpmiZflLHF2Mza5jtvn1mFrVWCq2ePtGOMslB/qTBnmnKYulOAqsXV4/H0+HCWuai/1OLq8TZrnER2o9Tf6mGLsbfK3CBbkqe+1Nfi7CRekylillaDrDRqm87b5/3+/myTt/j6++ju88nX5DlunnGXuVyHr3ufv8PT4r7P3/r7/DhtnbzO3rPH2uTr8kFzoUJ0ot3m7u3y9vT3+l6IsNvk7Ud4pYOkwoenxIWmw0t7p4+tyGWOs32gv5izzN/n7yxkl22Ut26UuK/E2PD098bV49zl7uzx9vH1+LLH2Txwn1eErdjj7DdsnZ+50MfW5CdhlTltnhlWjv///6ZzFo8AAACAdFJOU/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8AOAVLZwAAC1FJREFUeNrsnftf1MYWwFEx3JJdRV0EqbAVUEDAay1ikn0kuwuCCIiCUF+ItmKr7e37eh97M/96896ZZJ7ZZOv9OOcnkcnZ7PnO45wzZ4Y+wCfbMye+XxooLJTXyguFgaXd4uPPgJQcpI8Hxk+TZxftuCzOXxqUUHoP5LeVozWbJO3ZM9vShr0EsjG5bNPlh4cPpBV7BWTvXL/NIbOPpR17AcRasnnlaENaMm8gP6utmNXvPngyRyLS3zclbZkrkAs3E0b/GwAnyVNY/Yk0Zn5Atr5PWrz8ym1Ombcmr0pz5gTkxQDG3qr7m/11CpHXq9KeuQAZxbm694a939XqFCLlC9KgOQC50cIZeyhcXO5SiPRXpUUzBzJyGWfqwsvw96eoDvAJadKMgYzgDb0SNShpkkgPgdzAjg974H6nyeppKpEVadQMgexh1w97DlmtT1ATKv1yZc8OyHVC53+EPvSIOkTa/5JmzQjI1jHexIvT6EOM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
+name: MobileironCLOUD
+script:
+  commands:
+  - arguments: []
+    description: This command is used to get devices data to the particular device
+      based on device id
+    name: mobileiron-get-devices-data
+    outputs:
+    - contextPath: Mobileiron.DevicesInfo
+      description: Fetches the data from devices
+      type: Unknown
+  - arguments:
+    - description: This argument fetch the device id for mobileiron unlock device
+        only command
+      name: device_id
+    - description: This argument fetches the platform for mobileiron unlock device
+        only command
+      name: platform
+    description: This command is used to unlock device to the particular device based
+      on device id
+    name: mobileiron-unlock-device
+    outputs:
+    - contextPath: Mobileiron.cmd_result
+      description: Command result for unlock device only
+      type: Unknown
+    - contextPath: Mobileiron.err_code
+      description: Command code for unlock device only
+    - contextPath: Mobileiron.err_message
+      description: Command message for unlock device only
+  - arguments:
+    - description: This argument fetch the device id for mobileiron retire device
+        command
+      name: device_id
+    - description: This argument fetches the platform for mobileiron retire device
+        command
+      name: platform
+    description: This command is used to retire device to the particular device based
+      on device id
+    name: mobileiron-retire-device
+    outputs:
+    - contextPath: Mobileiron.cmd_result
+      description: Command result for retire device
+      type: Unknown
+    - contextPath: Mobileiron.err_code
+      description: Command code for retire device
+    - contextPath: Mobileiron.err_message
+      description: Command message for retire device
+  - arguments:
+    - description: This argument fetch the device id for mobileiron wipe device command
+      name: device_id
+    - description: This argument fetches the platform for mobileiron wipe device command
+      name: platform
+    description: This command is used to wipe device to the particular device based
+      on device id
+    name: mobileiron-wipe-device
+    outputs:
+    - contextPath: Mobileiron.cmd_result
+      description: Command result for wipe device
+      type: Unknown
+    - contextPath: Mobileiron.err_code
+      description: Command code for wipe device
+    - contextPath: Mobileiron.err_message
+      description: Command message for wipe device
+  - arguments:
+    - description: This argument fetch the device id for mobileiron force checkin
+        command
+      name: device_id
+    - description: This argument fetches the platform for mobileiron force checkin
+        command
+      name: platform
+    description: This command is used to force checkin to the particular device based
+      on device id
+    name: mobileiron-force-check-in
+    outputs:
+    - contextPath: Mobileiron.cmd_result
+      description: Command result for force checkin
+      type: Unknown
+    - contextPath: Mobileiron.err_code
+      description: Command code for force checkin
+    - contextPath: Mobileiron.err_message
+      description: Command message for force checkin
+  - arguments:
+    - description: This argument fetch the device id for mobileiron send message command
+      name: device_id
+    - description: This argument fetches the platform for mobileiron send message
+        command
+      name: platform
+    - description: Provide push notification message for email
+      name: pushmessage
+      required: true
+    - description: Provide Subject for email
+      name: subject
+      required: true
+    - description: Provide message for email
+      name: message
+      required: true
+    description: This command is used to send a message to the particular device based
+      on device id
+    name: mobileiron-send-message
+    outputs:
+    - contextPath: Mobileiron.cmd_result
+      description: Command result for send message
+      type: Unknown
+    - contextPath: Mobileiron.err_code
+      description: Command code for send message
+    - contextPath: Mobileiron.err_message
+      description: Command message for send message
+  dockerimage: demisto/python3:3.8.3.9324
+  isfetch: true
+  runonce: false
+  script: |-
+    import json
+    import requests
+    import traceback
+    import urllib3
+    from typing import Any, Dict, Tuple, List, Optional, Union, cast
+
+    # Disable insecure warnings
+    urllib3.disable_warnings()
+
+    '''Constants'''
+
+    """ Transaltion of KEY names which are retreived from response (Cloud) are defined in translation_cloud
+        ** Add using comma separated values to translation_cloud
+        Example --- ,'imei':'IMEI'
+    """
+    translation_cloud = {
+                            'guid':'Id',
+                            'id':'deviceId',
+                            'platformVersion':'OS Version',
+                            'manufacturer':'manufacturer',
+                            'deviceModel':'DeviceModel',
+                            'registrationState':'registration Status',
+                            'imei':'IMEI',
+                            'imsi':'IMSI',
+                            'platformType':'Platform',
+                            'jailbroken':'Security State',
+                            'displayName':'User Display Name',
+                            'emailAddress':'User Email address',
+                            'uid':'User ID',
+                            'clientLastCheckin':'Last check in Timestamp',
+                            'lastRegistrationTime':'Device registration timestamp',
+                            'ownershipType':'DeviceOwner',
+                            'quarantined':'IsDeviceQuarantined',
+                            'complianceState':'IsDeviceCompliant'}
+
+    """ Read the integration params and declare them as global variables.
+    """
+
+    params = demisto.params()
+    credentials = params.get('credentials')
+    username = credentials.get('identifier')
+    password = credentials.get('password')
+    base_url = params.get('url')
+    dm_partition_id = params.get('dmPartitionId')
+    queryParam = params.get('query')
+    timeInteval = params.get('fetch_interval')
+
+
+    #Initiate default data for headers.
+    auth_header = b64_encode(f'{username}:{password}')
+    headers = {
+        'Authorization': f'Basic {auth_header}'
+    }
+
+
+    incidents = []
+    translation = []
+
+    class MobileironClient(BaseClient):
+        """MobileironClient class to interact with the service API
+
+        This MobileironClient implements API calls, and does not contain any Demisto logic.
+        Should only do requests and return data.
+        It inherits from BaseClient defined in CommonServer Python.
+        Most calls use _http_request() that handles proxy, SSL verification, etc.
+        """
+
+        def get_devices_data(self, query: str = queryParam , dmpartitionid: str = dm_partition_id ) -> Dict[str, Any]:
+            """
+            Function to get response by building an API through user input and returning
+            all the devices list with required information and conditions using query
+            type query: String
+            dmpartitionid: String
+
+            Returns - Response data in the form of Dict
+
+            """
+
+            #return self._http_request(
+            #    method='GET',
+            #    url_suffix='/api/v1/device?',
+            #    params={
+            #        'dmPartitionId': dmpartitionid,
+            #        'query': query
+            #    }
+            #)
+
+            """ Code for Pagination
+                The core device api can retrive only limited list of devices at each run.
+                fetchBatch is the attribute used to set the limit for each run. The default value is 25.
+                This value can be changed according to the information provided in API documentation from Mobileiron Core.
+
+            fetchBatch = 25
+             find the devices count.
+            response = self._http_request(
+                    method='GET',
+                    url_suffix='/api/v1/device',
+                    params={
+                        'dmPartitionId':dmpartitionid,
+                        'fq':query,
+                        '':
+                        ''
+                    }
+                )
+            results = response["result"]
+            cntDevices = results["totalCount"]"""
+
+            auth_header = b64_encode(f'{username}:{password}')
+            url = base_url+'/api/v1/device?'+'dmPartitionId='+dmpartitionid+'&fq='+query
+            headers = {
+                'Authorization': f'Basic {auth_header}'
+            }
+            response = requests.request("GET", url, headers = headers)
+            if(response.status_code == 200):
+
+              data = response.json()
+              return data
+            else:
+                raise ValueError('Failed to connect Server/URL')
+
+
+        def get_device_severity(self, deviceInfo : Dict[str, Any]) -> str:
+
+            """
+            Function to find the device severity based on conditions given below
+
+            type deviceInfo:Dict
+
+            returns severity after converting to XSOAR severity in the type of Int
+
+            """
+
+            severity = convert_to_demisto_severity('Low')
+            if (deviceInfo['jailbroken']):
+                severity = convert_to_demisto_severity('Critical')
+                return severity
+            elif (deviceInfo['complianceState']) == False :
+                severity = convert_to_demisto_severity('High')
+                return severity
+            elif deviceInfo['quarantined']:
+                severity = convert_to_demisto_severity('Low')
+                return severity
+
+            return severity
+
+        def execute_action(self, action_str: str, deviceid: str, method_type: str) -> Dict[str, Any]:
+
+            """Execute Post actions to Mobileiron CORE based on the conditions.
+
+            :type action_str: ``str``
+            :param action_str: Action String based on the action to be performed over Mobileiron Core.
+            :type deviceid: ``str``
+            :param deviceid: DeviceID on which the actions should be performed..
+            :type method_type: ``str``
+            :param method_type: Method type for the actions to be performed ('PUT','POST','GET')
+
+            :return: dict containing the scan results as returned from the API
+            :rtype: ``Dict[str, Any]``
+            """
+            url='/api/v1/device/'+ action_str
+            return self._http_request(
+                        method=method_type,
+                        url_suffix=url,
+                        params={'ids':deviceid}
+                )
+
+        def send_message(self, pushmessage:str,subject: str, message: str, dm_partition_id: str, deviceid: str ) -> Dict[str, Any]:
+            """Execute send message action to Mobileiron CORE based on the conditions.
+
+            :type pushmessag: ``str``
+            :param pushmessag: Pushmessage to send notification using push message.
+            :type subject: ``str``
+            :param subject: Subject for the email
+            :type message: ``str``
+            :param message: Message for the email
+            :type dm_partition_id: ``str``
+            :param dm_partition_id: Partition ID for the device.
+            :type deviceid: ``str``
+            :param deviceid: DeviceID on which the actions should be performed..
+
+
+            :return: dict containing the scan results as returned from the API
+            :rtype: ``Dict[str, Any]``
+            """
+
+            return self._http_request(
+                method='PUT',
+                url_suffix='/api/v1/device/message',
+                params={
+                    'sendPushNotification':True,
+                    'pushNotificationMessage':pushmessage,
+                    'sendEmail':True,
+                    'emailSubject':subject,
+                    'emailBody':message,
+                    'dmPartitionId':dm_partition_id,
+                    'deviceIds':deviceid
+                }
+            )
+
+        def ping_url(self):
+            """Executes PING ´to check for the connection with Mobileiron CLOUD.
+
+            :return: Demisto.results(ok)
+            """
+
+            response = self._http_request(
+                method='GET',
+                url_suffix='/api/v1/tenant/partition/device'
+            )
+            if (response) and (response["result"]):
+                demisto.results('ok')
+
+
+
+    def rename_keys(event_input:Dict[str, Any], keys:Dict[str, Any])-> Dict[str, Any]:
+        """ Function to rename/translate keys from the API Response
+
+            :type event_input: ``str``
+            :param event_input: Each device information retrieved from CLOUD.
+            :type keys: ``str``
+            :param keys: Translated keys set as definied in the headers.
+
+            :return: dict containing the scan results as returned from the API
+            :rtype: ``Dict[str, Any]``
+        """
+        return dict([(keys.get(k, k), v) for k, v in event_input.items()])
+
+    def datetime_to_posix_without_milliseconds(datetime_object):
+        """ Function to convert UTC time to string. """
+        timestamp_in_unix_millisecond = date_to_timestamp(datetime_object, 'datetime.datetime')
+        posix_with_ms = timestamp_in_unix_millisecond
+        posix_without_ms = str(posix_with_ms).split(',')[0]
+        return posix_without_ms
+
+    def convert_to_demisto_severity(severity: str) -> int:
+        """Maps Mobileiron severity to Cortex XSOAR severity
+
+        Converts the HelloWorld alert severity level ('Low', 'Medium',
+        'High', 'Critical') to Cortex XSOAR incident severity (1 to 4)
+        for mapping.
+
+        :type severity: ``str``
+        :param severity: severity as returned from the analyzed function (str)
+
+        :return: Cortex XSOAR Severity (1 to 4)
+        :rtype: ``int``
+        """
+
+        # In this case the mapping is straightforward, but more complex mappings
+        # might be required in your integration, so a dedicated function is
+        # recommended. This mapping should also be documented.
+        return {
+            'Low': 1,  # low severity
+            'Medium': 2,  # medium severity
+            'High': 3,  # high severity
+            'Critical': 4   # critical severity
+        }[severity]
+
+    def execute_command(client: MobileironClient, args: Dict[str, Any], action_str: str, method_type: str ) -> CommandResults:
+        """mobileiron-unlock-device-only command: Returns results for a Mobileiron PostAction
+
+        :type client: ``Client``
+        :param Client: Mobileiron client to use
+
+        :type args: ``Dict[str, Any]``
+        :param args:
+            all command arguments, usually passed from ``demisto.args()``.
+            ``args['device_id']`` Device ID to post actions on a device
+
+        :return:
+            A ``CommandResults`` compatible to return ``return_results()``,
+            that contains a Post action result
+            A Dict of entries also compatible to ``return_results()``
+
+        :rtype: ``CommandResults``
+        """
+
+        deviceid = args.get('device_id',None)
+        action_str=action_str
+        response = client.execute_action(action_str=action_str, deviceid=deviceid, method_type=method_type)
+
+        validation = response["result"]
+        if validation == 1:
+            results = { 'cmd_result':True ,
+                        'err_code':0,
+                        'err_message':'Command has been executed sucessfully'
+                      }
+
+            return CommandResults(
+                #readable_output=readable_output,
+                outputs_prefix='Mobileiron',
+                outputs_key_field='cmd_result',
+                outputs=results
+            )
+        else:
+            raise ValueError("Failed to perform the action on the device .... Please verify manually")
+
+
+    def ping_url(client: MobileironClient):
+        """ This definition is for test command to get Ping response from Cloud"""
+
+        response = client.ping_url()
+
+
+
+    def fetch_incidents(client: MobileironClient ) -> List[Dict[str, Any]] :
+        """This function returns incidents after analyzing the response data
+
+        This function has to implement the logic of making sure that incidents are
+        fetched based on analyzing the response data. By default it's invoked by
+        XSOAR every minute. It will use last_run to save the timestamp of the last
+        incident it processed.
+
+        :type client: ``Client``
+        :param Client: HelloWorld client to use
+
+        :return:
+            incidents are returned in the form of dict
+        """
+
+        # Initialize an empty list of incidents to return
+        # Each incident is a dict with a string as a key
+        incidents: List[Dict[str, Any]] = []
+        devices_response = client.get_devices_data()
+        devices = devices_response['result']
+        devices = devices['searchResults']
+
+        for device in devices:
+
+            #If no name is present it will throw an exception
+            incident_name = device['deviceModel']
+
+            #Rename keys for device attributes
+            modified_device = rename_keys(device, translation_cloud)
+            #Get severity based on conditions given in getDeviceSeverity function
+            severity = client.get_device_severity(device)
+
+
+            # INTEGRATION DEVELOPER TIP
+            # The incident dict is initialized with a few mandatory fields:
+            # name: the incident name
+            # occurred: the time on when the incident occurred, in ISO8601 format
+            # we use timestamp_to_datestring() from CommonServerPython.py to
+            # handle the conversion.
+            # rawJSON: everything else is packed in a string via json.dumps()
+            # and is included in rawJSON. It will be used later for classification
+            # and mapping inside XSOAR.
+            # severity: it's not mandatory, but is recommended. It must be
+            # converted to XSOAR specific severity (int 1 to 4)
+            # Note that there are other fields commented out here. You can do some
+            # mapping of fields (either out of the box fields, like "details" and
+            # "type") or custom fields (like "helloworldid") directly here in the
+            # code, or they can be handled in the classification and mapping phase.
+            # In either case customers can override them. We leave the values
+            # commented out here, but you can use them if you want.
+            incident = {
+                'name': incident_name,
+                'rawJSON': json.dumps(modified_device),
+                'type': 'UEM Device Cloud',  # Map to a specific XSOAR incident Type
+                'severity': severity
+            }
+
+            incidents.append(incident)
+
+        return incidents
+
+
+    def get_devices_data_command(client: MobileironClient, args: Dict[str, Any]) -> CommandResults:
+        """get_devicesData: Returns a list of all devices from mobileiron system
+
+        :type client: ``MobileironClient``
+        :param client: Mobileiron UEM client to use
+
+        :type args: ``Dict[str, Any]``
+        :param args:
+            all command arguments, usually passed from ``demisto.args()``
+
+        :return:
+            A ``CommandResults`` object that is then passed to ``return_results``,
+            that contains the device data
+
+        :rtype: ``CommandResults``
+        """
+
+        devices_data_response = client.get_devices_data()
+        devices_data = devices_data_response["result"]
+        devices_data = devices_data["searchResults"]
+        #readable_output = tableToMarkdown(f'Device List', devices_data)
+
+        return CommandResults(
+            #readable_output=readable_output,
+            outputs_prefix='Mobileiron.DevicesInfo',
+            outputs_key_field='devices_data',
+            outputs=devices_data
+        )
+
+
+
+
+    def send_message_command(client: MobileironClient, args: Dict[str, Any]) -> CommandResults:
+
+        """mobileiron-send-message command: Returns results for a Mobileiron PostAction
+
+        :type client: ``Client``
+        :param Client: Mobileiron client to use
+
+        :type args: ``Dict[str, Any]``
+        :param args:
+            all command arguments, usually passed from ``demisto.args()``.
+            ``args['device_id']`` Device ID to post actions on a device
+
+        :return:
+            A ``CommandResults`` compatible to return ``return_results()``,
+            that contains a Post action result
+            A Dict of entries also compatible to ``return_results()``
+
+        :rtype: ``CommandResults``
+        """
+
+        deviceid = args.get('device_id',None)
+        pushmessage = args.get('pushmessage',None)
+        message = args.get('message',None)
+        subject = args.get('subject',None)
+        #raise ValueError(send_message_url)
+
+        response = client.send_message(pushmessage,subject,message,dm_partition_id,deviceid)
+        validation = response["result"]
+        if validation:
+            results = { 'cmd_result':True ,
+                        'err_code':0,
+                        'err_message':'Command has been executed sucessfully'
+                      }
+
+            return CommandResults(
+                #readable_output=readable_output,
+                outputs_prefix='Mobileiron',
+                outputs_key_field='cmd_result',
+                outputs=results
+            )
+        else:
+            raise ValueError("Failed to perform the action on the device .... Please verify manually")
+
+
+
+    def main():
+
+        # if your MobileironClient class inherits from BaseClient, SSL verification is
+        # handled out of the box by it, just pass ``verify_certificate`` to
+        # the MobileironClient constructor
+        verify_certificate = not demisto.params().get('insecure', False)
+
+        # if your MobileironClient class inherits from BaseClient, system proxy is handled
+        # out of the box by it, just pass ``proxy`` to the MobileironClient constructor
+        proxy = demisto.params().get('proxy', False)
+        try:
+
+
+            client = MobileironClient(
+                base_url=base_url,
+                verify=verify_certificate,
+                headers=headers,
+                proxy=proxy)
+
+            if demisto.command() == 'test-module':
+                # This is the call made when pressing the integration Test button.
+                ping_url(client)
+
+            elif demisto.command() == 'fetch-incidents':
+                #Code For changing the pull incidents with timeline.
+                now_utc = datetime.utcnow()
+                current_run_time_posfix = datetime_to_posix_without_milliseconds(now_utc)
+                current_run_time = current_run_time_posfix
+
+                last_run_data = demisto.getLastRun()
+                last_run_time = int(0)
+                if last_run_data:
+                    last_run_time = last_run_data['time']
+
+                next_run_interval = timeInteval
+                date_time_interval_ago = now_utc - timedelta(minutes=int(next_run_interval))
+                date_time_interval_ago_posix = datetime_to_posix_without_milliseconds(date_time_interval_ago)
+                time_interval_ago = date_time_interval_ago_posix
+
+                if last_run_time != 0:
+                    if last_run_time > time_interval_ago:
+                        noIncidents = []
+                        demisto.incidents(noIncidents)
+                        sys.exit(0)
+                #End of skip based on the time interval.
+
+
+                # Set and define the fetch incidents command to run after activated via integration settings.
+                incidents = fetch_incidents(
+                    client=client
+                )
+                # fetch-incidents calls ``demisto.incidents()`` to provide the list of incidents to create
+                demisto.incidents(incidents)
+                demisto.setLastRun({'time': current_run_time})
+
+            elif demisto.command() == 'mobileiron-get-devices-data':
+                # To get the list of devices data with the given parameters..
+                return_results(get_devices_data_command(client, demisto.args()))
+
+            elif demisto.command() == 'mobileiron-unlock-device':
+                # Post Action to unclock a Fetched device based on device id
+                return_results(execute_command(client, demisto.args(),"unlock", "PUT"))
+
+            elif demisto.command() == 'mobileiron-retire-device':
+                # Post Action to retire a Fetched device based on device id
+                return_results(execute_command(client, demisto.args(),"retire", "PUT"))
+
+            elif demisto.command() == 'mobileiron-wipe_device':
+                # Post Action to wipe a Fetched device based on device id
+                return_results(execute_command(client, demisto.args(),"wipe", "PUT"))
+
+            elif demisto.command() == 'mobileiron-force-check-in':
+                # Post Action to force checkin a Fetched device based on device id
+                return_results(execute_command(client, demisto.args(),"forceCheckin", "PUT"))
+
+            elif demisto.command() == 'mobileiron-send-message':
+                # Post Action to send a message to Fetched device based on device id
+                return_results(send_message_command(client, demisto.args()))
+
+        # Log exceptions and return errors
+        except Exception as e:
+            demisto.error(traceback.format_exc())  # print the traceback
+            return_error(f'Failed to execute {demisto.command()} command.\nError:\n{str(e)}')
+
+    if __name__ in ('__main__', '__builtin__', 'builtins'):
+        main()
+  subtype: python3
+  type: python
